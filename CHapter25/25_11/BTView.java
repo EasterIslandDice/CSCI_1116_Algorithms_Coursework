@@ -26,7 +26,7 @@ public class BTView extends Pane {
         this.getChildren().clear(); // Clear the pane
         if (tree.getRoot() != null) {
             // Display tree recursively
-            displayTree(tree.getRoot(), getWidth() / 2, vGap, getWidth() / 4);
+            displayTree(tree.getRoot(), 25, 125, getWidth() / 4);
         }
     }
 
@@ -37,16 +37,16 @@ public class BTView extends Pane {
             double x, double y, double hGap) {
         if (root.left != null) {
             // Draw a line to the left node
-            getChildren().add(new Line(x - hGap, y + vGap, x, y));
+            getChildren().add(new Line(x + hGap, y + vGap, x, y));
             // Draw the left subtree recursively
-            displayTree(root.left, x - hGap, y + vGap, hGap / 2);
+            displayTree(root.left, x + hGap, y + vGap, hGap / 2);
         }
 
         if (root.right != null) {
             // Draw a line to the right node
-            getChildren().add(new Line(x + hGap, y + vGap, x, y));
+            getChildren().add(new Line(x + hGap, y - vGap, x, y));
             // Draw the right subtree recursively
-            displayTree(root.right, x + hGap, y + vGap, hGap / 2);
+            displayTree(root.right, x + hGap, y - vGap, hGap / 2);
         }
 
         // Display a node
